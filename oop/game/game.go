@@ -49,7 +49,7 @@ func (g *Game) Start() player.Player {
 			}
 			hit = ask_action.Hit(opponent_hand)
 		case action.GuessAction:
-			guess_action := action.GuessAction{
+			guess_action := &action.GuessAction{
 				Card: act.GetCard(),
 			}
 			hit = guess_action.Hit(rest_card)
@@ -58,6 +58,8 @@ func (g *Game) Start() player.Player {
 			} else {
 				win_player = &opponent_player
 			}
+		default:
+			panic("not implemented")
 		}
 
 		var result string
