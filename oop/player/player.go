@@ -155,13 +155,13 @@ func (h HumanPlayer) parseCommand(command string, args []string) action.Actioner
 
 type RandomAI struct {
 	name         string
-	random_state rand.PCG
+	random_state *rand.Rand
 }
 
 func NewRandomAI(name string, random_state rand.PCG) Player {
 	return &RandomAI{
 		name:         name,
-		random_state: random_state,
+		random_state: rand.New(&random_state),
 	}
 }
 
@@ -174,7 +174,6 @@ func (r RandomAI) Name() string {
 func (r *RandomAI) SelectAction(action action.ActionList) action.Actioner {
 	all_actions := action.AllActions()
 
-	seed := rand.New(&r.random_state)
-	idx := seed.IntN(len(all_actions))
+	idx := r.random_state.IntN(len(all_actions))
 	return all_actions[idx]
 }

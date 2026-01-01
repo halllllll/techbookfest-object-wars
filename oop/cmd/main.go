@@ -11,13 +11,14 @@ import (
 )
 
 func main() {
-	seed := rand.NewPCG(1, 5)
-	dealer := card.NewDealer(*seed)
+	dealer_seed := rand.NewPCG(1, 5)
+	dealer := card.NewDealer(*dealer_seed)
 	deal := dealer.DealStart()
 
 	terminal := terminal.New(os.Stdin, os.Stdout)
 	player0 := player.NewHumanPlayer("Player0", deal.Player0Hand(), *terminal)
-	player1 := player.NewRandomAI("Player1", *seed)
+	ai_sead := rand.NewPCG(3, 2)
+	player1 := player.NewRandomAI("Player1", *ai_sead)
 	game := game.NewGame(deal, player0, player1, *terminal)
 
 	win_player := game.Start()

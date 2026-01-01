@@ -5,21 +5,20 @@ import (
 )
 
 type Dealer struct {
-	random_state rand.PCG
+	random_state *rand.Rand
 }
 
 func NewDealer(random_state rand.PCG) *Dealer {
 	return &Dealer{
-		random_state: random_state,
+		random_state: rand.New(&random_state),
 	}
 }
 
 func (d *Dealer) DealStart() Deal {
 	// seed
-	r := rand.New(&d.random_state)
 
 	all_cards := AllCards()
-	r.Shuffle(len(all_cards), func(i, j int) {
+	d.random_state.Shuffle(len(all_cards), func(i, j int) {
 		all_cards[i], all_cards[j] = all_cards[j], all_cards[i]
 	})
 	player0_hand := Hand{
