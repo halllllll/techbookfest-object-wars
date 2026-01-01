@@ -36,6 +36,6 @@ func (t *Terminal) Print(output string) error {
 	return err
 }
 
-func (t *Terminal) EmptyLine() {
-	t.Print("\n")
+func (t *Terminal) EmptyLine() error {
+	return t.Print("\n")
 }

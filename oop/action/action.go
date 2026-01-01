@@ -16,12 +16,6 @@ type AskAction struct {
 	Card card.Card
 }
 
-func NewAskAction(card card.Card) Actioner {
-	return AskAction{
-		Card: card,
-	}
-}
-
 func (a AskAction) GetCard() card.Card {
 	return a.Card
 }
@@ -31,6 +25,9 @@ func (a AskAction) Hit(hand card.Hand) bool {
 }
 
 func (a AskAction) Equals(other Actioner) bool {
+	if _, ok := other.(AskAction); !ok {
+		return false
+	}
 	return a.Card.Equals(other.GetCard())
 }
 
@@ -42,12 +39,6 @@ type GuessAction struct {
 	Card card.Card
 }
 
-func NewGuessAction(card card.Card) Actioner {
-	return GuessAction{
-		Card: card,
-	}
-}
-
 func (a GuessAction) GetCard() card.Card {
 	return a.Card
 }
@@ -57,6 +48,9 @@ func (a GuessAction) Hit(card card.Card) bool {
 }
 
 func (a GuessAction) Equals(other Actioner) bool {
+	if _, ok := other.(GuessAction); !ok {
+		return false
+	}
 	return a.Card.Equals(other.GetCard())
 }
 
