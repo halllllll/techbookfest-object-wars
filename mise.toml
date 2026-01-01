@@ -1,2 +1,5 @@
 [tools]
-go = "latest"
+go = "1.25.5"
+pnpm = "10.27.0"
+
+[env]
