@@ -134,7 +134,7 @@ func (h HumanPlayer) parseCommand(command string, args []string) action.Actioner
 		h.terminal.Print(err.Error())
 		return nil
 	}
-	card := card.Card{Number: num}
+	card := card.NewCard(num)
 
 	if command == "ask" {
 		return action.AskAction{

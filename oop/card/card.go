@@ -11,7 +11,7 @@ const (
 )
 
 type Card struct {
-	Number int
+	number int
 }
 
 func NewCard(num int) Card {
@@ -19,23 +19,23 @@ func NewCard(num int) Card {
 		log.Fatalf("invalid number: %d", num)
 	}
 	return Card{
-		Number: num,
+		number: num,
 	}
 }
 
 func (c Card) Equals(other Card) bool {
-	return c.Number == other.Number
+	return c.number == other.GetNumber()
 }
 func (c Card) LessThan(other Card) bool {
-	return c.Number < other.Number
+	return c.number < other.GetNumber()
 }
 
 func (c Card) String() string {
-	return fmt.Sprintf("Card(%d)", c.Number)
+	return fmt.Sprintf("Card(%d)", c.number)
 }
 
 func (c Card) GetNumber() int {
-	return c.Number
+	return c.number
 }
 
 func AllCards() []Card {
@@ -47,4 +47,3 @@ func AllCards() []Card {
 
 	return cards
 }
-
