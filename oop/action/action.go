@@ -16,6 +16,7 @@ type AskAction struct {
 	Card card.Card
 }
 
+
 func (a AskAction) GetCard() card.Card {
 	return a.Card
 }
@@ -38,6 +39,7 @@ func (a AskAction) String() string {
 type GuessAction struct {
 	Card card.Card
 }
+
 
 func (a GuessAction) GetCard() card.Card {
 	return a.Card

@@ -100,7 +100,10 @@ OOPではデータを見つける
     - 文字列を読み込む
     - 文字列を出力する
     - 空行を出力する
+- GameObserver
+  - できること
 
+GameObserverはゲームに関する表示。
 
 ```go
 go run cmd/main.go

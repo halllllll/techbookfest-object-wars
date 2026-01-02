@@ -19,9 +19,12 @@ func main() {
 	player0 := player.NewHumanPlayer("Player0", deal.Player0Hand(), *terminal)
 	ai_sead := rand.NewPCG(3, 2)
 	player1 := player.NewRandomAI("Player1", *ai_sead)
-	game := game.NewGame(deal, player0, player1, *terminal)
 
-	win_player := game.Start()
+	g := game.NewGame(deal, player0, player1)
+	view := game.NewGameView(terminal)
+	g.AddObserver(view)
+
+	win_player := g.Start()
 
 	terminal.Print(fmt.Sprintf("%s won\n", win_player.Name()))
 }
