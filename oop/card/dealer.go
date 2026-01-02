@@ -21,12 +21,8 @@ func (d *Dealer) DealStart() Deal {
 	d.random_state.Shuffle(len(all_cards), func(i, j int) {
 		all_cards[i], all_cards[j] = all_cards[j], all_cards[i]
 	})
-	player0_hand := Hand{
-		Cards: all_cards[:4],
-	}
-	player1_hand := Hand{
-		Cards: all_cards[4:8],
-	}
+	player0_hand := NewHand(all_cards[:4])
+	player1_hand := NewHand(all_cards[4:8])
 
 	rest_card := all_cards[len(all_cards)-1]
 

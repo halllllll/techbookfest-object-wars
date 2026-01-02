@@ -69,7 +69,7 @@ func (h HumanPlayer) Name() string {
 }
 
 func (h HumanPlayer) printHelp(actions action.ActionList) {
-	hand_str := h.formatCard(h.hand.Cards)
+	hand_str := h.formatCard(h.hand.GetCards())
 	h.terminal.Print(fmt.Sprintf("Your hand: %v\n", hand_str))
 	h.terminal.Print("Available command:\n")
 
