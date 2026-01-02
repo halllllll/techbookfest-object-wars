@@ -90,8 +90,13 @@ OOPではデータを見つける
     - Deal
     - 先手プレイヤー
     - 後手プレイヤー
+    - GameView
   - できること
     - ゲームを開始する
+    - GameObserverへの登録
+    - GameObserverからの削除
+    - GameObserverへのAskの通知
+    - GameObserverへのGuessの通知
 - ターミナル
   - 要素
     - 入力ストリーム
@@ -100,10 +105,11 @@ OOPではデータを見つける
     - 文字列を読み込む
     - 文字列を出力する
     - 空行を出力する
-- GameObserver
+- GameView
+  - 要素
+    - 表示するもの
   - できること
-
-GameObserverはゲームに関する表示。
+    - ゲームの進行を表示
 
 ```go
 go run cmd/main.go
